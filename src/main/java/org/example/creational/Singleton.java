@@ -1,20 +1,18 @@
 package org.example.creational;
 
 public class Singleton {
-    //lazy initialization
+    //Thread-safe singleton
     //instance created only when required
     private static Singleton instance;
-    private Singleton(){
-
+    private Singleton() {
     }
 
-    public static Singleton getInstance(){
-        if(instance == null){
+    //synchronized method ensure thread-safety
+    public static synchronized Singleton getInstance() {
+        if (instance == null) {
             instance = new Singleton();
         }
         return instance;
     }
-
-    //better than early initialization
-    //still not thread-safe
+    //synchronized method although thread-safe takes up lots of overhead and can reduce the speed of a large program/application
 }
