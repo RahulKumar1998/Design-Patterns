@@ -1,26 +1,17 @@
 package org.example.creational;
 
 public class Singleton {
-    //Thread-safe singleton
-    //instance created only when required
-    private static Singleton instance;
 
-    private Singleton() {
+    //bill pugh singleton
+    //creation of singleton using static inner class, instance only created when inner class is loaded
+    private static class SingletonHolder {
+        private static final Singleton INSTANCE = new Singleton();
     }
-
-    //synchronized getInstance() using double-check locking
+    private Singleton() {}
     public static Singleton getInstance() {
-        if (instance == null) {
-            synchronized (Singleton.class) {
-                if (instance == null) {
-                    instance = new Singleton();
-                }
-            }
-        }
-        return instance;
+        return SingletonHolder.INSTANCE;
     }
 
-    //Lock is acquired on class object as monitor object(Singleton.class)
-    //double-checked locking is used, if instance is null, locks are not acquired by the threads.
-    //this slightly reduces the overhead due to synchronization
+    //JVM ensures that class-loading and static field initializations are thread-safe,
+    //hence no explicit synchronization is required
 }
