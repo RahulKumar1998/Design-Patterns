@@ -1,14 +1,20 @@
 package org.example.creational;
 
 public class Singleton {
-    //eager initialization
-    //instance created on class loading, and will be created even if not required.
-    private static final Singleton singleton = new Singleton();
-
-    private Singleton() {
+    //lazy initialization
+    //instance created only when required
+    private static Singleton instance;
+    private Singleton(){
 
     }
-    public static Singleton getInstance() {
-        return singleton;
+
+    public static Singleton getInstance(){
+        if(instance == null){
+            instance = new Singleton();
+        }
+        return instance;
     }
+
+    //better than early initialization
+    //still not thread-safe
 }
