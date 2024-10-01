@@ -2,10 +2,15 @@ package org.example.creational;
 
 public class CreationalDemo {
     public static void main(String[] args) {
-        Singleton singleton = Singleton.getInstance();
-        Singleton singleton2 = Singleton.getInstance();
-        System.out.println(singleton);
-        System.out.println(singleton2);
+//        Singleton singleton = Singleton.getInstance();
+//        Singleton singleton2 = Singleton.getInstance();
+//        System.out.println(singleton);
+//        System.out.println(singleton2);
+
+            Prototype prototype = new Prototype(24, "rahul");
+            Prototype prototype2 = prototype.cloneIt();
+            System.out.println(prototype);
+            System.out.println(prototype2);
 
     }
 }
