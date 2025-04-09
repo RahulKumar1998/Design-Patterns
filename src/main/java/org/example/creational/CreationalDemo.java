@@ -1,26 +1,37 @@
 package org.example.creational;
 
+import org.example.creational.abstractFactory.*;
+
+import java.util.Scanner;
+
 public class CreationalDemo {
+    private static ParentFactory parentFactory;
     public static void main(String[] args) {
-//        Singleton singleton = Singleton.getInstance();
-//        Singleton singleton2 = Singleton.getInstance();
-//        System.out.println(singleton);
-//        System.out.println(singleton2);
+        //abstract factory implementation from client code:
 
-//            Prototype prototype = new Prototype(24, "rahul");
-//            Prototype prototype2 = prototype.cloneIt();
-//            System.out.println(prototype);
-//            System.out.println(prototype2);
+        try{
+            int productType;
+            Scanner sc = new Scanner(System.in);
+            productType = sc.nextInt();
+            if(productType == 1){
+                parentFactory = new ChildFactory1();
+            }
+            else if(productType == 2){
+                parentFactory = new ChildFactory2();
+            }
+            else{
+                throw new IllegalArgumentException("Invalid product type");
+            }
+            //use factory to create concrete products:
+            AbstractProduct1 concreteProduct1 = parentFactory.createProductOfType1();
+            AbstractProduct2 concreteProduct2 = parentFactory.createProductOfType2();
 
-        ProductInterface product1 = Factory.createProduct("ConcreteProductOne");
-        product1.method();
-
-        ProductInterface product2 = Factory.createProduct("ConcreteProductTwo");
-        product2.method();
-
-        ProductInterface product3 = Factory.createProduct("ConcreteProductThree");
-        product3.method();
-
+            concreteProduct1.details();
+            concreteProduct2.information();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
 
     }
 }

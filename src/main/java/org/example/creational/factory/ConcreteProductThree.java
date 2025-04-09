@@ -1,6 +1,6 @@
-package org.example.creational;
+package org.example.creational.factory;
 
-public class ConcreteProductThree implements ProductInterface{
+public class ConcreteProductThree implements ProductInterface {
 
     @Override
     public void method() {

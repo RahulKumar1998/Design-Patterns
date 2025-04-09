@@ -1,4 +1,4 @@
-package org.example.creational;
+package org.example.creational.prototype;
 
 public class Prototype implements PrototypeInterface{
 
